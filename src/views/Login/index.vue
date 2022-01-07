@@ -7,7 +7,7 @@ export default {
   name: "Login",
   setup() {
     const handleLogin = () => {
-      console.log('登录');
+      console.log(1111);
     };
 
     return { handleLogin };

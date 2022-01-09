@@ -1,19 +1,17 @@
-import Vue from 'vue';
-import VueI18n from 'vue-i18n';
-// import ElementLocale from 'element-ui/lib/locale';
-// 引入各个语言配置文件
-import zh from './config/zh';
-import en from './config/en';
-Vue.use(VueI18n);
-// 创建vue-i18n实例i18n
-const i18n = new VueI18n({
-  // 设置默认语言
-  locale: localStorage.getItem('locale') || 'zh', // 语言标识
+//引入vue-i18n组件
+import { createI18n, useI18n } from 'vue-i18n'
+import store from '@/store';
+
+// 引入语言
+import zh from './config/zh'
+import en from './config/en'
+const i18n = createI18n({
+  globalInjection: true, // 全局注册 $t方法
+  locale: store.state.user.locale || 'zh', // set locale
   messages: {
     zh,
-    en,
+    en
   },
 })
-// ElementLocale.i18n((key, value) => i18n.t(key, value))
-// 暴露i18n
-export default i18n;
+
+export default i18n

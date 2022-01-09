@@ -1,4 +1,3 @@
-const en = {
+export default {
   select: 'Please select',
-}
-export default en;
+};

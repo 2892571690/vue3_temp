@@ -6,6 +6,7 @@ import store from './store'
 // 引入相关插件
 import ElementPlus from 'element-plus'
 import dayjs from "dayjs";
+import i18n from '@/i18n';
 
 // dayjs引入中文
 import "dayjs/locale/zh-cn";
@@ -19,6 +20,7 @@ const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
+app.use(i18n)
 app.mount('#app')
 
 // 引入icons

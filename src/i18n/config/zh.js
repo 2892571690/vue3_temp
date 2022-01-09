@@ -1,4 +1,3 @@
-const zh = {
+export default {
   select: '请选择',
-}
-export default zh;
+};

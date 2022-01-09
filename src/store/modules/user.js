@@ -22,11 +22,11 @@ const user = {
     // 登录
     login({
       commit
-    }, userInfo) {
+    }, loginForm) {
       const {
         userName,
         passWord
-      } = userInfo
+      } = loginForm
       return new Promise((resolve, reject) => {
         commit('SET_TOKEN', userName + passWord)
         cookies.setToken('token', userName + passWord, 60 * 60 * 24 * 7)
@@ -35,14 +35,10 @@ const user = {
     },
     // 获取用户信息
     getInfo({
-      commit,
-      state
-    }) {
+      commit
+    }, userInfo) {
       return new Promise((resolve, reject) => {
-        commit('SET_USERINFO', {
-          name: 'wpl',
-          userId: 100
-        })
+        commit('SET_USERINFO', userInfo)
         resolve()
       })
     },

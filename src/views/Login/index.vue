@@ -3,11 +3,23 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   name: "Login",
   setup() {
+    const store = useStore();
+    const router = useRouter();
+    // 登陆
     const handleLogin = () => {
-      console.log(1111);
+      store
+        .dispatch("user/login", {
+          userName: "admin",
+          passWord: 123456,
+        })
+        .then((res) => {
+          router.replace({ path: "/" });
+        });
     };
 
     return { handleLogin };

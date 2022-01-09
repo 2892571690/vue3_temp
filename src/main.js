@@ -16,6 +16,9 @@ import 'element-plus/dist/index.css'
 
 dayjs.locale("zh-cn"); // 改变dayjs全局语言
 
+// 引入相关文件
+import './permission';
+
 const app = createApp(App)
 app.use(store)
 app.use(router)

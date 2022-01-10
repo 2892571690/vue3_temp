@@ -41,7 +41,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
 export default {
-  name: "login",
+  name: "Login",
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -91,14 +91,10 @@ export default {
       passWord: "123",
     });
     const submitForm = () => {
-      ruleFormRef.value.validate((valid) => {
+      ruleFormRef.value.validate(async (valid) => {
         if (valid) {
-          store
-            .dispatch("user/login", ruleForm)
-            .then(() => {
-              router.replace({ path: "/" }, () => {});
-            })
-            .catch(() => {});
+          let loginType = await store.dispatch("user/login", ruleForm)
+          router.replace({ path: "/" }, () => {});
         }
       });
     };

@@ -7,7 +7,7 @@ import cookies from '@/utils/auth'
 
 NProgress.configure({ showSpinner: false })
 
-const whiteList = ['/login'] // 不需要token的白名单
+const whiteList = ['/login', '/404', '/401'] // 不需要token的白名单
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
@@ -20,22 +20,18 @@ router.beforeEach(async (to, from, next) => {
             next({ path: '/' })
         } else {
             // 判断有没有用户信息
-            if (!store.getters.userInfo.userId) {
-                // 拉取用户信息
-                store.dispatch('user/getInfo', { userName: 'wpl', userId: '001' }).then(() => {
-                    // 获取路由
-                    store.dispatch('permission/generateRoutes', 'admin').then(accessRoutes => {
-                        for (const accessRoute of accessRoutes) {
-                            router.addRoute(accessRoute)
-                        }
-                        next({
-                            ...to,
-                            replace: true
-                        })
-                    })
-                })
-            } else {
+            let userId = store.getters.userInfo.userId
+            if (userId) {
                 next()
+            } else {
+                // 拉取用户信息
+                let userType = await store.dispatch('user/getInfo', { userName: 'wpl', userId: 1 })
+                // 获取路由
+                let accessRoutes = await store.dispatch('permission/generateRoutes', userType || 'admin')
+                accessRoutes.forEach((route) => {
+                    router.addRoute(route)
+                })
+                next({ ...to, replace: true })
             }
         }
     } else {

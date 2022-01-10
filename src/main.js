@@ -13,6 +13,7 @@ import "dayjs/locale/zh-cn";
 
 // 引入样式
 import 'element-plus/dist/index.css'
+import '@/styles/index.scss'
 
 dayjs.locale("zh-cn"); // 改变dayjs全局语言
 
@@ -20,6 +21,10 @@ dayjs.locale("zh-cn"); // 改变dayjs全局语言
 import './permission';
 
 const app = createApp(App)
+
+// 添加原型方法
+app.config.globalProperties.$dayjs = dayjs;
+
 app.use(store)
 app.use(router)
 app.use(ElementPlus)

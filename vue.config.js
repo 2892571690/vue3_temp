@@ -92,7 +92,7 @@ module.exports = {
             .options({
                 symbolId: 'icon-[name]'
             })
-            // .end()
+        // .end()
 
         config
             .when(process.env.NODE_ENV !== 'development',
@@ -131,5 +131,12 @@ module.exports = {
                     config.optimization.runtimeChunk('single')
                 }
             )
-    }
+    },
+    css: {
+        loaderOptions: {
+            sass: {
+                data: `@import "@/styles/variables.scss";`
+            }
+        }
+    },
 }

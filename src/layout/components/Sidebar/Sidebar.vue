@@ -42,21 +42,20 @@ let settings = computed(() => {
 
 //change  scss variable to js
 const dillScssExportToJson = (scssExportJson) => {
-  let jsonString;
-  if(typeof(scssExportJson) === 'string'){
-    jsonString = scssExportJson.replace(/:export\s*/, '').replace(/[\s+\r\n]/g, '')
-  }else{
-    jsonString = JSON.stringify(scssExportJson)
-  }
-  let scssJson = {}
-  jsonString
-    .slice(1, jsonString.length - 2)
-    .split(';')
-    .forEach((fItem) => {
-      let arr = fItem.split(':')
-      scssJson[arr[0]] = arr[1]
-    })
-  return scssJson
+  // 如果scssExportJson是字符串使用这个
+  // let jsonString = scssExportJson.replace(/:export\s*/, '').replace(/[\s+\r\n]/g, '')
+  // let scssJson = {}
+  // jsonString
+  //   .slice(1, jsonString.length - 2)
+  //   .split(';')
+  //   .forEach((fItem) => {
+  //     let arr = fItem.split(':')
+  //     scssJson[arr[0]] = arr[1]
+  //   })
+  // return scssJson
+
+  // 如果就是对象使用这个
+  return scssExportJson
 }
 
 //get scss variable

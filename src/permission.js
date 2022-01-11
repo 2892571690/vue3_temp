@@ -28,6 +28,7 @@ router.beforeEach(async (to, from, next) => {
                 let userType = await store.dispatch('user/getInfo', { userName: 'wpl', userId: 1 })
                 // 获取路由
                 let accessRoutes = await store.dispatch('permission/generateRoutes', userType || 'admin')
+                store.commit('permission/M_routes', accessRoutes)
                 accessRoutes.forEach((route) => {
                     router.addRoute(route)
                 })

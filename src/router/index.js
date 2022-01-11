@@ -31,6 +31,7 @@ import Layout from '@/layout'
 //          cachePage->default:false;true->页面初始加载会进行缓存;
 //          leaveRmCachePage->default:false;true->页面离开后会移除本页面缓存
 //          activeMenu：要选中那个侧边栏item,如列表页跳转到详情页(设置为hidden)，如果想要还选中高亮列表页可以设置activeMenu:"列表页的链接"
+//          affix:tagView固定，default:false
 //        */
 //       meta: { title: 'Keep-Alive', cachePage: true, leaveRmCachePage: false }
 //     },
@@ -79,10 +80,11 @@ export const asyncRoutes = [{
     path: 'home',
     name: 'Home',
     component: () => import('@/views/Home/index.vue'),
-    //使用el svg图标时，首先使用elSvgIcon，同时使用elSvgIcon和图标
+    //使用el-svg图标时，首先使用elSvgIcon，同时使用elSvgIcon和图标
     meta: {
       title: '首页',
       elSvgIcon: 'Fold',
+      affix:true
     }
   }]
 },
@@ -94,10 +96,10 @@ export const asyncRoutes = [{
     path: '/user',
     name: 'User',
     component: () => import('@/views/User/index.vue'),
-    //使用el svg图标时，首先使用elSvgIcon，同时使用elSvgIcon和图标
+    //也可以直接使用svg,assets/icons/svg的内容
     meta: {
       title: '用户列表',
-      elSvgIcon: 'Fold'
+      icon: 'size'
     }
   }]
 },

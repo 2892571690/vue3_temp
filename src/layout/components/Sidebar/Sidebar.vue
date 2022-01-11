@@ -42,7 +42,12 @@ let settings = computed(() => {
 
 //change  scss variable to js
 const dillScssExportToJson = (scssExportJson) => {
-  let jsonString = scssExportJson.replace(/:export\s*/, '').replace(/[\s+\r\n]/g, '')
+  let jsonString;
+  if(typeof(scssExportJson) === 'string'){
+    jsonString = scssExportJson.replace(/:export\s*/, '').replace(/[\s+\r\n]/g, '')
+  }else{
+    jsonString = JSON.stringify(scssExportJson)
+  }
   let scssJson = {}
   jsonString
     .slice(1, jsonString.length - 2)

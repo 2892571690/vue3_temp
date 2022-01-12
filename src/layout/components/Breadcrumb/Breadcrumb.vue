@@ -23,7 +23,7 @@
 
 <script setup>
 import { onBeforeMount, getCurrentInstance, watch, ref, computed } from 'vue'
-import { compile } from 'path-to-regexp'
+import * as pathToRegexp from 'path-to-regexp'
 let levelList = ref(null)
 let { proxy } = getCurrentInstance()
 
@@ -40,7 +40,7 @@ const getBreadcrumb = () => {
   const first = matched[0]
   if (!isDashboard(first)) {
     //it can replace the first page if not exits
-    matched = [{ path: '/', meta: { title: 'Dashboard' } }].concat(matched)
+    matched = [{ path: '/', meta: { title: '首页' } }].concat(matched)
   }
   levelList.value = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
 }
@@ -50,11 +50,11 @@ const isDashboard = (route) => {
   if (!name) {
     return false
   }
-  return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+  return name.trim() === '首页'
 }
 const pathCompile = (path) => {
   const { params } = proxy.$route
-  const toPath = compile(path)
+  const toPath = pathToRegexp.compile(path)
   return toPath(params)
 }
 const handleLink = (item) => {

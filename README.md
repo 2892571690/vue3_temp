@@ -25,6 +25,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ```
 框架：vue3、webpack
-插件：vue-router、vuex、axios、dayjs、js-cookie、nprogress、sass、vue-i18n
+插件：vue-router、vuex、axios、dayjs、js-cookie、nprogress、sass、vue-i18n、screenfull
 UI:element-plus
 ```

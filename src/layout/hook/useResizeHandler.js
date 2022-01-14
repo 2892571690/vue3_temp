@@ -10,10 +10,8 @@ export default function () {
   const $_resizeHandler = () => {
     if (!document.hidden) {
       const isMobile = $_isMobile()
-      // console.log('toggleDevice')
       // store.dispatch('app/toggleDevice', isMobile ? 'mobile' : 'desktop')
       if (isMobile) {
-        // console.log('closeSideBar')
         // store.dispatch('app/closeSideBar', { withoutAnimation: true })
         /*此处只做根据window尺寸关闭sideBar功能*/
         store.commit('app/M_sidebar_opened', false)

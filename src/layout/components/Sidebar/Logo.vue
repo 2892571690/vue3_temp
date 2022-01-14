@@ -60,6 +60,8 @@ let { title, logo, showLogo } = toRefs(state)
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
     & .sidebar-logo {
       width: 32px;
       height: 32px;

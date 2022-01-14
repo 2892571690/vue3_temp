@@ -7,7 +7,7 @@
         class="hamburger-container"
         @toggleClick="toggleSideBar"
       />
-      <breadcrumb class="breadcrumb-container" />
+      <breadcrumb class="breadcrumb-container" v-if="settings.showBreadcrumb"/>
     </div>
     <!--nav title-->
     <div class="heardCenterTitle" v-if="settings.showNavbarTitle">{{ settings.showNavbarTitle }}</div>
@@ -79,6 +79,8 @@ const loginOut = () => {
   margin-top: 5px;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: end;
 
   .user-avatar {
     cursor: pointer;

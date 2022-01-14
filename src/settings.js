@@ -19,12 +19,17 @@ const setting = {
   ShowDropDown: true,
   /**
    * @type {boolean} true | false
-   * @description 是否展示面包屑
+   * @description 是否展示Menu收缩
    */
   showHamburger: true,
   /**
    * @type {boolean} true | false
-   * @description 是否在右侧面板中显示设置
+   * @description 是否展示面包屑
+   */
+   showBreadcrumb: true,
+  /**
+   * @type {boolean} true | false
+   * @description 是否在路由Menu
    */
   showLeftMenu: true,
   /**
@@ -51,13 +56,6 @@ const setting = {
    * @type {string} 'roles' | 'code'
    */
   permissionMode: 'roles',
-  /**
-   * @type {string | array} 'dev' | ['prod','test','dev'] according to the .env file props of VITE_APP_ENV
-   * @description 需要显示错误日志组件。
-   *默认值仅在生产环境中使用
-   *如果您还想在dev中使用它，您可以通过['dev'，'test']
-   */
-  errorLog: ['prod'],
 }
 
 export default setting

@@ -10,28 +10,23 @@ import Layout from '@/layout'
 //   path: '/writing-demo',
 //   component: Layout,
 //   redirect: '/writing-demo/keep-alive',
-//   /*
-//     alwaysShow-> default:false; true:当有一个子元素时显示父级；false:当有一个子元素时,不显示父级
-//     hidden-> default:false; true:侧边栏中隐藏当前标签，包括其children；
-//   */
 //   meta: { title: 'Writing Demo', icon: 'eye-open' },
-//   alwaysShow: true,
-//   hidden:false
+//   alwaysShow: true, // 默认:false; true:当有一个子元素时显示父级；false:当有一个子元素时,不显示父级
+//   hidden:false, // 默认:false; true:侧边栏中隐藏当前标签，包括其children；
 //   children: [
 //     {
 //       path: 'keep-alive',
 //       component: () => import('@/views/example/keep-alive'),
-//       // name-> 路由跳转时的name;keep-alive缓存时的name,建议必写
-//       name: 'KeepAlive',
-//       //cachePage: 页面进入时缓存页面, default false
-//       //leaveRmCachePage: 页面离开时删除缓存页面, default false
+//       name: 'KeepAlive',  // 路由跳转时的name;keep-alive缓存时的name,建议必写
+//       cachePage:  // 页面进入时缓存页面, 默认:false
+//       leaveRmCachePage:  // 页面离开时删除缓存页面, 默认:false
 //        /*
 //         meta属性介绍:
 //          title：sideBar显示的名称
-//          cachePage->default:false;true->页面初始加载会进行缓存;
-//          leaveRmCachePage->default:false;true->页面离开后会移除本页面缓存
+//          cachePage：默认:false; true:页面初始加载会进行缓存;
+//          leaveRmCachePage：默认:false; true:页面离开后会移除本页面缓存
 //          activeMenu：要选中那个侧边栏item,如列表页跳转到详情页(设置为hidden)，如果想要还选中高亮列表页可以设置activeMenu:"列表页的链接"
-//          affix:tagView固定，default:false
+//          affix：tagView固定, 默认:false
 //        */
 //       meta: { title: 'Keep-Alive', cachePage: true, leaveRmCachePage: false }
 //     },
@@ -84,22 +79,23 @@ export const asyncRoutes = [{
     meta: {
       title: '首页',
       elSvgIcon: 'Fold',
-      affix:true
+      affix: true
     }
   }]
 },
 {
-  path: '/user',
+  path: '/users',
   component: Layout,
-  redirect: '/user/user',
+  redirect: '/users/user',
   children: [{
-    path: '/user',
+    path: 'user',
     name: 'User',
     component: () => import('@/views/User/index.vue'),
     //也可以直接使用svg,assets/icons/svg的内容
     meta: {
       title: '用户列表',
-      icon: 'size'
+      icon: 'size',
+      cachePage: true
     }
   }]
 },

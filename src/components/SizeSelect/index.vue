@@ -22,9 +22,10 @@
 import { computed, reactive, toRefs } from 'vue'
 const state = reactive({
   sizeOptions: [
-    { label: 'Large', value: 'large' },
     { label: 'Default', value: 'default' },
+    { label: 'Medium', value: 'medium' },
     { label: 'Small', value: 'small' },
+    { label: 'Mini', value: 'mini' }
   ]
 })
 

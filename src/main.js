@@ -19,6 +19,7 @@ dayjs.locale("zh-cn"); // 改变dayjs全局语言
 
 // 引入相关文件
 import './permission';
+import settings from './settings'
 
 const app = createApp(App)
 
@@ -27,7 +28,9 @@ app.config.globalProperties.$dayjs = dayjs;
 
 app.use(store)
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus, {
+    size: localStorage.getItem('size') || settings.defaultSize,
+})
 app.use(i18n)
 app.mount('#app')
 

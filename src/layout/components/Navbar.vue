@@ -15,6 +15,7 @@
     </div>
     <div class="right-menu rowSC">
       <ScreenFull />
+      <SizeSelect />
       <el-dropdown trigger="click" size="medium" v-if="settings.ShowDropDown">
         <div class="avatar-wrapper">
           <img src="@/assets/images/header.jpg" class="user-avatar" />
@@ -38,6 +39,7 @@
 
 <script setup>
 import ScreenFull from '@/components/ScreenFull/index.vue'
+import SizeSelect from '@/components/SizeSelect/index.vue'
 
 import { CaretBottom } from "@element-plus/icons-vue";
 import Breadcrumb from "./Breadcrumb";

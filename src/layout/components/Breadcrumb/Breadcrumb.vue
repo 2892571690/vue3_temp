@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/" >
+  <el-breadcrumb class="app-breadcrumb" separator="/">
     <!--has transition  Judging by settings.mainNeedAnimation-->
     <transition-group name="breadcrumb" v-if="settings.mainNeedAnimation">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
@@ -39,10 +39,11 @@ const getBreadcrumb = () => {
   let matched = proxy.$route.matched.filter((item) => item.meta && item.meta.title)
   const first = matched[0]
   if (!isDashboard(first)) {
-    //it can replace the first page if not exits
+    // 如果不存在，它可以替换第一页
     matched = [{ path: '/', meta: { title: '首页' } }].concat(matched)
   }
   levelList.value = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+  console.log(levelList.value)
 }
 
 const isDashboard = (route) => {
@@ -50,7 +51,7 @@ const isDashboard = (route) => {
   if (!name) {
     return false
   }
-  return name.trim() === '首页'
+  return name.trim() === 'Home'
 }
 const pathCompile = (path) => {
   const { params } = proxy.$route

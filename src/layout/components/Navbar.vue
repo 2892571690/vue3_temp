@@ -7,12 +7,15 @@
         class="hamburger-container"
         @toggleClick="toggleSideBar"
       />
-      <breadcrumb class="breadcrumb-container" v-if="settings.showBreadcrumb"/>
+      <breadcrumb class="breadcrumb-container" v-if="settings.showBreadcrumb" />
     </div>
     <!--nav title-->
-    <div class="heardCenterTitle" v-if="settings.showNavbarTitle">{{ settings.showNavbarTitle }}</div>
-    <div class="right-menu rowSC" v-if="settings.ShowDropDown">
-      <el-dropdown trigger="click" size="medium">
+    <div class="heardCenterTitle" v-if="settings.showNavbarTitle">
+      {{ settings.showNavbarTitle }}
+    </div>
+    <div class="right-menu rowSC">
+      <ScreenFull />
+      <el-dropdown trigger="click" size="medium" v-if="settings.ShowDropDown">
         <div class="avatar-wrapper">
           <img src="@/assets/images/header.jpg" class="user-avatar" />
           <CaretBottom style="width: 1em; height: 1em; margin-left: 4px" />
@@ -34,35 +37,37 @@
 </template>
 
 <script setup>
-import { CaretBottom } from '@element-plus/icons-vue'
-import Breadcrumb from './Breadcrumb'
-import Hamburger from './Hamburger'
-import { computed, getCurrentInstance } from 'vue'
-import { ElMessage } from 'element-plus'
-import { useStore } from 'vuex'
-let { proxy } = getCurrentInstance()
-const store = useStore()
+import ScreenFull from '@/components/ScreenFull/index.vue'
+
+import { CaretBottom } from "@element-plus/icons-vue";
+import Breadcrumb from "./Breadcrumb";
+import Hamburger from "./Hamburger";
+import { computed, getCurrentInstance } from "vue";
+import { ElMessage } from "element-plus";
+import { useStore } from "vuex";
+let { proxy } = getCurrentInstance();
+const store = useStore();
 let settings = computed(() => {
-  return store.state.app.settings
-})
+  return store.state.app.settings;
+});
 const opened = computed(() => {
-  return store.state.app.sidebar.opened
-})
+  return store.state.app.sidebar.opened;
+});
 const toggleSideBar = () => {
-  store.commit('app/M_toggleSideBar')
-}
+  store.commit("app/M_toggleSideBar");
+};
 /*
  * 退出登录
  * */
 const loginOut = () => {
-  store.dispatch('user/logout').then(() => {
+  store.dispatch("user/logout").then(() => {
     // ElMessage({ message: '退出登录成功', type: 'success' })
     // record the back point
     // proxy.$router.push(`/login?redirect=${proxy.$route.fullPath}`)
     //此处reload清空路由和重置部分状态
-    location.reload()
-  })
-}
+    location.reload();
+  });
+};
 </script>
 
 <style lang="scss" scoped>

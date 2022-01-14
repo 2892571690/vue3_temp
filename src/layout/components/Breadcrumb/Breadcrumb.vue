@@ -43,7 +43,6 @@ const getBreadcrumb = () => {
     matched = [{ path: '/', meta: { title: '首页' } }].concat(matched)
   }
   levelList.value = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
-  console.log(levelList.value)
 }
 
 const isDashboard = (route) => {

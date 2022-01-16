@@ -1,11 +1,14 @@
 <template>
-  <el-button @click="logout">退出</el-button>
+  <div>
+    <el-button @click="logout">退出</el-button>
+    <el-button type="primary">Primary</el-button>
+  </div>
 </template>
 <script>
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 export default {
-  name:'Home',
+  name: "Home",
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -13,7 +16,11 @@ export default {
     // 退出
     const logout = () => {
       store.dispatch("user/logout").then(() => {
-        router.push(`/login?redirect=${route.fullPath}`);
+        // ElMessage({ message: '退出登录成功', type: 'success' })
+        // record the back point
+        // proxy.$router.push(`/login?redirect=${proxy.$route.fullPath}`)
+        //此处reload清空路由和重置部分状态
+        location.reload();
       });
     };
 

@@ -26,7 +26,7 @@ const setting = {
    * @type {boolean} true | false
    * @description 是否展示面包屑
    */
-   showBreadcrumb: true,
+  showBreadcrumb: true,
   /**
    * @type {boolean} true | false
    * @description 是否在路由Menu
@@ -56,6 +56,16 @@ const setting = {
    * @type {string} 'roles' | 'code'
    */
   permissionMode: 'roles',
+  /*
+    * i18n setting default language
+    * en/zh
+    * */
+  defaultLanguage: 'zh',
+  /*
+   * i18n setting default language
+   * en/zh
+   * */
+  defaultSize: 'mini',
 }
 
 export default setting

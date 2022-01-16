@@ -50,7 +50,7 @@ const mutations = {
         break
       }
     }
-  }
+  },
 }
 
 const actions = {
